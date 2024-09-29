@@ -4,7 +4,7 @@
   <name>smb_description</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="per.a.frivik@gmail.com">perslaptop</maintainer>
+  <maintainer email="per.a.frivik@gmail.com">perfrivik</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
