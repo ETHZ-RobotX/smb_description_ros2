@@ -6,7 +6,7 @@
 <robot name="smb" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- INCLUDE PLUGIN -->
-  <xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_rgb_camera.gazebo.xacro"/>
+  <xacro:include filename="$(find smb_description)/urdf/new_sensor_plugins/smb_rgb_camera.gazebo.xacro"/>
 
 
   <xacro:macro name="rgb_camera_cam" params="*origin id base_link simulation">
@@ -25,12 +25,12 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://smb_description/urdf/new_payload/meshes/SMB_blackfly_camera.dae"/> 
+          <mesh filename="${description_path}/urdf/new_payload/meshes/SMB_blackfly_camera.dae"/> 
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://smb_description/urdf/new_payload/meshes/SMB_blackfly_camera.dae"/> 
+          <mesh filename="${description_path}/urdf/new_payload/meshes/SMB_blackfly_camera.dae"/> 
         </geometry>
       </collision>
       <material name="red">
@@ -61,9 +61,9 @@
       <child link="rgb_camera${id}_optical_link"/>
     </joint>
 
-    <xacro:if value="${simulation}">
-        <xacro:rgb_camera_camera_plugin name="rgb_camera" link_name="${rgb_camera_link}" rate="${rgb_camera_update_rate}"/>
-    </xacro:if>
+    <!-- <xacro:if value="${simulation}"> -->
+    <xacro:rgb_camera_camera_plugin name="rgb_camera" link_name="${rgb_camera_link}" rate="${rgb_camera_update_rate}"/>
+    <!-- </xacro:if> -->
 
 
   </xacro:macro>
