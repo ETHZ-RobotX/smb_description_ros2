@@ -2,27 +2,17 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="smb">
 
     <!-- TODO: replace this arg by other ones like sensors, legacy, etc -->
-    <xacro:arg name="lidar" default="true"/>
-    <xacro:arg name="tracking_camera" default="false"/>
+    <xacro:property name="description_path" value="$(find smb_description)"/>
 
-    <!-- Defines colors and calculates typical inertias -->
-    <xacro:include filename="$(find smb_description)/urdf/smb_utils.urdf.xacro" />
-    <!-- Defines IMU macro -->
-    <xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_imu.gazebo.xacro"/>
-    <!-- Defines Lidar macro -->
-    <xacro:if value="$(arg lidar)">
-        <xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_robosense.gazebo.xacro"/>
-    </xacro:if>
-    <!-- Defines odometry macro -->
-    <xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_odometry.gazebo.xacro"/>
-    <!-- Defines realsense_t265 (tracking camera) macro -->
-    <xacro:if value="$(arg tracking_camera)">
-        <xacro:include filename="$(find smb_description)/urdf/realsense_t265.urdf.xacro"/>
-    </xacro:if>
-    <!-- Defines blackfly rgb_camera camera macro -->
-    <xacro:include filename="$(find smb_description)/urdf/smb_rgb_camera.urdf.xacro"/>
-    <!-- Defines lidar macro -->
-    <xacro:include filename="$(find smb_description)/urdf/smb_lidar_mount.urdf.xacro"/>
+    <xacro:arg name="lidar" default="true"/>
+    <xacro:arg name="tracking_camera" default="true"/>
+
+    <xacro:include filename="${description_path}/urdf/smb_utils.urdf.xacro" />
+    <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_imu.gazebo.xacro"/>
+    <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_lidar.gazebo.xacro"/>
+    <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_odometry.urdf.xacro"/>
+    <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_rgb_camera.urdf.xacro"/>
+    <xacro:include filename="${description_path}/urdf/smb_lidar_mount.urdf.xacro"/>
 
     <!-- Model macros -->
     <xacro:macro name="wheel" params="prefix X Y wheel_joint_type friction_coeff:=0.2 transmission_reduction:=${wheelTransmission}" >
@@ -46,7 +36,7 @@
             <visual>
                 <origin xyz="0 0 0" rpy="1.570796 0  0" />
                 <geometry>
-                    <mesh filename="package://smb_description/urdf/meshes/wheel.dae" />
+                    <mesh filename="${description_path}/urdf/meshes/wheel.dae"/>
                 </geometry>
             </visual>
             <inertial>
@@ -55,33 +45,6 @@
                 <xacro:cylinder_inertia m="${wheelMass}" r="${wheelRadius}" h="${wheelWidth}"/>
             </inertial>
         </link>
-
-        <gazebo reference="${prefix}_WHEEL">
-            <mu1 value="${friction_coeff}"/>
-            <mu2 value="${friction_coeff}"/>
-            <fdir1 value="1 0 0"/>
-            <kp>10000000.0</kp>
-            <kd>1.0</kd>
-            <minDepth>0.005</minDepth>
-            <maxVel>100.0</maxVel>
-            <material>Gazebo/DarkGrey</material>
-        </gazebo>
-
-        <transmission name="${prefix}_WHEEL_TRANS">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="${prefix}_WHEEL_JOINT">
-                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${prefix}_WHEEL_ACTUATOR">
-                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-                <mechanicalReduction>${transmission_reduction}</mechanicalReduction>
-            </actuator>
-        </transmission>
-
 
     </xacro:macro>
 
@@ -135,15 +98,13 @@
             <collision>
                 <origin xyz="${topXOffset} 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <!-- <box size="${topLength} ${topWidth} ${topHeight}"/> -->
-                     <mesh filename="package://smb_description/urdf/new_payload/meshes/SMB_step.dae"/>
+                    <mesh filename="${description_path}/urdf/meshes/SMB_step.dae"/>
                 </geometry>
             </collision>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <!-- <box size="${topLength} ${topWidth} ${topHeight}"/> -->
-                     <mesh filename="package://smb_description/urdf/new_payload/meshes/SMB_step.dae"/>
+                    <mesh filename="${description_path}/urdf/meshes/SMB_step.dae"/>
                 </geometry>
             </visual>
         </link>
@@ -207,14 +168,11 @@
             wheel_joint_type="${wheel_joint_type}" 
             friction_coeff="0.7"/>
 
-        <!-- <xacro:IMU base_link="${base_link_name}" simulation="${simulation}"/> -->
+        <xacro:IMU base_link="${base_link_name}" simulation="${simulation}"/>
 
-        <!-- <xacro:GPS base_link="${base_link_name}" simulation="${simulation}"/> -->
-
-        <!-- <xacro:rgb_camera_cam id="" base_link="${base_link_name}" simulation="${simulation}">
+        <xacro:rgb_camera_cam id="" base_link="${base_link_name}" simulation="${simulation}">
             <origin xyz="0.29082 -0.04542 ${0.0955 + chassisHeight/2.0}" rpy="0 0 0" />
         </xacro:rgb_camera_cam>
-
 
         <xacro:if value="${lidar}">
             <xacro:lidar_mount base_link="${base_link_name}"/>
@@ -225,8 +183,8 @@
             <xacro:REALSENSE_T265 base_link="base_link"
                 t265_origin_xyz="0.309 0.008 0.352"
                 t265_origin_rpy="0 0 0"
-                simulation="${simulation}"/>
-        </xacro:if> -->
+                simulation="True"/>
+        </xacro:if>
 
 
     </xacro:macro>

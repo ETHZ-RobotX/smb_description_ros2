@@ -14,18 +14,26 @@
     <xacro:property name="imu_topic" value="/imu"/>
 
     <xacro:if value="${simulation}">
+    
+    <gazebo>
+        <plugin filename="gz-sim-imu-system"
+            name="gz::sim::systems::Imu">
+        </plugin>
+    </gazebo>
+
     <gazebo reference="${imu_link}">
       <sensor name="imu_sensor" type="imu">
         <always_on>true</always_on>
         <update_rate>${imu_update_rate}</update_rate>
         <visualize>true</visualize>
-        <plugin name="smb_imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+        <topic>/imu</topic>
+        <!-- <plugin name="smb_imu_plugin" filename="libgazebo_ros_imu_sensor.so">
           <ros>
             <namespace>/</namespace>
             <remapping>~/out:=${imu_topic}</remapping>
           </ros>
           <initial_orientation_as_reference>false</initial_orientation_as_reference>
-        </plugin>
+        </plugin> -->
       </sensor>
     </gazebo>
     </xacro:if>
@@ -46,13 +54,13 @@
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="${description_path}/urdf/new_payload/meshes/SMB_imu.dae"/>
+          <mesh filename="${description_path}/urdf/meshes/SMB_imu.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="${description_path}/urdf/new_payload/meshes/SMB_imu.dae"/>
+          <mesh filename="${description_path}/urdf/meshes/SMB_imu.dae"/>
         </geometry>
       </collision>
     </link> 

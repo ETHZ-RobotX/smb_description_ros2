@@ -8,12 +8,7 @@
   <xacro:property name="realsense_t265_height" value="0.025"/>
   <xacro:property name="realsense_t265_width"  value="0.013"/>
   <xacro:property name="realsense_t265_housing_center_x_offset"  value="0.00910"/>
-  <!-- t265_origin_xyz is the offset to the parent link -->
-  <!-- t265_origin_rpy is the fixed axis roll, pitch and yaw angle such that the resulting frame has
-       the x axis pointing forward ("out of camera"),
-       the y axis pointing left and the z axis pointing upward -->
-  <!-- another frame "realsense_t265_odom_frame is created that is in line with the one documented here:
-       https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/IntelRealSenseTrackingT265Datasheet.pdf -->
+
 
   <xacro:macro name="REALSENSE_T265" params="base_link t265_origin_xyz t265_origin_rpy simulation">
 
@@ -78,9 +73,9 @@
     </joint>
     -->
     
-    <xacro:if value="${simulation}">
-          <xacro:odometry_plugin sensor_link="tracking_camera_link" topic_name="/tracking_camera/odom/sample" odom_frame="tracking_camera_odom_frame" child_odom_frame="tracking_camera_pose_frame" rate="200" max_linear_speed_before_settle="0.01" max_angular_speed_before_settle="0.05" publish_tf="false"/>
-    </xacro:if>
+    <!-- <xacro:if value="${simulation}"> -->
+    <xacro:odometry_plugin sensor_link="tracking_camera_link" topic_name="/tracking_camera/odom/sample" odom_frame="tracking_camera_odom_frame" child_odom_frame="tracking_camera_pose_frame" rate="200" max_linear_speed_before_settle="0.01" max_angular_speed_before_settle="0.05" publish_tf="false"/>
+    <!-- </xacro:if> -->
 
 
 
