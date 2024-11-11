@@ -24,7 +24,23 @@
             <dynamics damping="1.0" friction="0.0"/>
             <limit effort="100" velocity="10"/>
             <joint_properties damping="0.2" friction="0.2"/>
+
+            <!-- <gazebo>
+                <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+                    <joint_name>${prefix}_WHEEL_JOINT</joint_name>
+                    <initial_velocity>1.0</initial_velocity>
+                </plugin>
+            </gazebo> -->
+
         </joint>
+
+        <gazebo>
+            <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+                <joint_name>${prefix}_WHEEL_JOINT</joint_name>
+                <!-- <topic> -->
+                <!-- <initial_velocity>0.0</initial_velocity> -->
+            </plugin>
+        </gazebo>
 
         <link name="${prefix}_WHEEL">
             <collision>
@@ -86,7 +102,7 @@
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <box size="$0.1 0.1 0.1"/>
+                    <box size="0.1 0.1 0.1"/>
                 </geometry>
                 <material name="base_material">
                     <color rgba="0.8 0.0 0.1 1.0"/>
@@ -173,7 +189,7 @@
         <xacro:rgb_camera_cam id="" base_link="${base_link_name}" simulation="${simulation}">
             <origin xyz="0.29082 -0.04542 ${0.0955 + chassisHeight/2.0}" rpy="0 0 0" />
         </xacro:rgb_camera_cam>
-
+        <!-- LIDAR IS FUCKED -->
         <xacro:if value="${lidar}">
             <xacro:lidar_mount base_link="${base_link_name}"/>
             <xacro:LIDAR parent_link="lidar_mount_link" simulation="${simulation}"/>
