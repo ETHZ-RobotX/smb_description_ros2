@@ -46,13 +46,16 @@
 
       <gazebo reference="rslidar">
         <sensor name="rslidar" type="gpu_lidar">
+          <frame>rslidar</frame>
+          <gz_frame_id>rslidar</gz_frame_id>
+          <pose relative_to='rslidar'>0 0 0 0 0 0</pose>
           <topic>scan</topic>
           <update_rate>10</update_rate>
           <ray>
             <scan>
               <!-- Horizontal (360-degree rotation for full field of view) -->
               <horizontal>
-                <samples>180</samples> <!-- Higher sample count for denser scan -->
+                <samples>32</samples> <!-- Higher sample count for denser scan -->
                 <resolution>1</resolution>
                 <min_angle>-3.14159</min_angle> <!-- -180 degrees -->
                 <max_angle>3.14159</max_angle>  <!-- 180 degrees -->
@@ -60,7 +63,7 @@
               
               <!-- Vertical configuration with 32 channels -->
               <vertical>
-                <samples>32</samples> <!-- RS32 has 32 channels -->
+                <samples>16</samples> <!-- RS32 has 32 channels -->
                 <resolution>1</resolution>
                 <min_angle>-0.261799</min_angle> <!-- Approximately -15 degrees in radians -->
                 <max_angle>0.261799</max_angle>  <!-- Approximately +15 degrees in radians -->
@@ -70,7 +73,7 @@
             <!-- Range settings for RS32 -->
             <range>
               <min>0.2</min> <!-- Minimum detection range -->
-              <max>120.0</max> <!-- Maximum detection range; can vary slightly with RS32 models -->
+              <max>50.0</max> <!-- Maximum detection range; can vary slightly with RS32 models -->
               <resolution>0.01</resolution> <!-- Resolution of 1 cm for high accuracy -->
             </range>
           </ray>
