@@ -50,24 +50,21 @@
           <gz_frame_id>rslidar</gz_frame_id>
           <pose relative_to='rslidar'>0 0 0 0 0 0</pose>
           <topic>scan</topic>
-          <update_rate>10</update_rate>
+          <update_rate>5</update_rate>
           <ray>
             <scan>
-              <!-- Horizontal (360-degree rotation for full field of view) -->
-              <horizontal>
-                <samples>32</samples> <!-- Higher sample count for denser scan -->
-                <resolution>1</resolution>
-                <min_angle>-3.14159</min_angle> <!-- -180 degrees -->
-                <max_angle>3.14159</max_angle>  <!-- 180 degrees -->
-              </horizontal>
-              
-              <!-- Vertical configuration with 32 channels -->
-              <vertical>
-                <samples>16</samples> <!-- RS32 has 32 channels -->
-                <resolution>1</resolution>
-                <min_angle>-0.261799</min_angle> <!-- Approximately -15 degrees in radians -->
-                <max_angle>0.261799</max_angle>  <!-- Approximately +15 degrees in radians -->
-              </vertical>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1.0</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1.0</resolution>
+              <min_angle>-0.261799</min_angle>
+              <max_angle>0.261799</max_angle>
+            </vertical>
             </scan>
             
             <!-- Range settings for RS32 -->
