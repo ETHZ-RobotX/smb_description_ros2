@@ -27,5 +27,8 @@
     <xacro:property name="wheelMass" value="5"/>
 
     <xacro:property name="description_path" value="$(find smb_description)"/>
+
+    <xacro:property name="simulation" value="true"/>
+
     
 </robot>

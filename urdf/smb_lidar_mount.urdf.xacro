@@ -15,7 +15,7 @@
     <link name="lidar_mount_link">
       <visual>
         <geometry>
-          <mesh filename="${description_path}/urdf/meshes/LidarBoxV2.dae"/>
+          <mesh filename="file://$(find smb_description)/urdf/meshes/LidarBoxV2.dae"/>
         </geometry>
       </visual>
       <inertial>

@@ -25,12 +25,12 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="${description_path}/urdf/meshes/SMB_blackfly_camera.dae"/> 
+          <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_blackfly_camera.dae"/> 
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="${description_path}/urdf/meshes/SMB_blackfly_camera.dae"/> 
+          <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_blackfly_camera.dae"/> 
         </geometry>
       </collision>
       <material name="red">

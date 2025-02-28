@@ -54,13 +54,13 @@
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="${description_path}/urdf/meshes/SMB_imu.dae"/>
+          <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_imu.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="${description_path}/urdf/meshes/SMB_imu.dae"/>
+          <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_imu.dae"/>
         </geometry>
       </collision>
     </link> 
