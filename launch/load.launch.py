@@ -7,7 +7,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 def generate_launch_description():
     # Path to the URDF file
     description_file = PathJoinSubstitution(
-        [FindPackageShare("smb_description"), "urdf", "robot.urdf.xacro"]
+        [FindPackageShare("smb_description"), "urdf", "smb.urdf.xacro"]
     )
 
     # Generate the robot description using xacro
