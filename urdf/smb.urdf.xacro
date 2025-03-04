@@ -115,13 +115,13 @@
             <collision>
                 <origin xyz="${topXOffset} 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <mesh filename="${description_path}/urdf/meshes/SMB_step.dae"/>
+                    <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_step.dae"/>
                 </geometry>
             </collision>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <mesh filename="${description_path}/urdf/meshes/SMB_step.dae"/>
+                    <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_step.dae"/>
                 </geometry>
             </visual>
         </link>
