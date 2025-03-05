@@ -36,6 +36,9 @@
 				<geometry>
 					<mesh filename="file://$(find smb_description)/urdf/meshes/wheel.dae" />
 				</geometry>
+				<material name="wheel_material">
+					<color rgba="0.0 0.0 0.0 1.0" />
+				</material>
 			</visual>
 			<inertial>
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -60,7 +63,7 @@
 					<box size="${chassisLength} ${chassisWidth} ${chassisHeight}" />
 				</geometry>
 				<material name="base_material">
-					<color rgba="0.8 0.0 0.1 1.0" />
+					<color rgba="1.0 0.0 0.0 1.0" />
 				</material>
 			</visual>
 		</link>
@@ -106,7 +109,7 @@
                     <box size="0.1 0.1 0.1"/>
                 </geometry>
                 <material name="base_material">
-                    <color rgba="0.8 0.0 0.1 1.0"/>
+                    <color rgba="1.0 0.0 0.0 1.0"/>
                 </material>
             </visual>
         </link>
@@ -123,6 +126,9 @@
                 <geometry>
                     <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_step.dae"/>
                 </geometry>
+				<material name="top_material">
+					<color rgba="0.1961 0.1961 0.1961 1.0" />
+				</material>
             </visual>
         </link>
 
