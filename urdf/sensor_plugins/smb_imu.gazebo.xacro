@@ -23,17 +23,14 @@
 
     <gazebo reference="${imu_link}">
       <sensor name="imu_sensor" type="imu">
+        <gz_frame_id>imu_link</gz_frame_id>
+        <!-- <frame>imu</frame>
+        <gz_frame_id>imu</gz_frame_id> -->
+        <!-- <pose relative_to='imu'>0 0 0 0 0 0</pose> -->
         <always_on>true</always_on>
-        <update_rate>${imu_update_rate}</update_rate>
+        <update_rate>400</update_rate>
         <visualize>true</visualize>
         <topic>/imu</topic>
-        <!-- <plugin name="smb_imu_plugin" filename="libgazebo_ros_imu_sensor.so">
-          <ros>
-            <namespace>/</namespace>
-            <remapping>~/out:=${imu_topic}</remapping>
-          </ros>
-          <initial_orientation_as_reference>false</initial_orientation_as_reference>
-        </plugin> -->
       </sensor>
     </gazebo>
     </xacro:if>
@@ -65,7 +62,7 @@
       </collision>
     </link> 
 
-    <link name="imu">
+    <link name="imu_sensor">
       <inertial>
         <mass value="0.001"/>
         <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -76,7 +73,7 @@
     <joint name="imu_imu_link_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <parent link="${imu_link}"/>
-      <child link="imu"/>
+      <child link="imu_sensor"/>
     </joint>
 
     <gazebo reference="${imu_link}">

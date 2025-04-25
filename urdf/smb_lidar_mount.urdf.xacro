@@ -35,6 +35,10 @@
       <child link="lidar_mount_link"/>
     </joint>
 
+    <gazebo reference='lidar_mount_joint'>
+      <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
 
   </xacro:macro> 
 </robot>
