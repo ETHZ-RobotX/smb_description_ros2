@@ -5,12 +5,13 @@
 	<xacro:include filename="$(find smb_description)/urdf/smb_utils.urdf.xacro" />
 	<xacro:include filename="$(find smb_description)/urdf/smb_properties.urdf.xacro" />
 	<!-- <xacro:include filename="$(find smb_description)/urdf/gps.urdf.xacro" /> -->
-	<xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_diff_drive_plugin.urdf.xacro" />
+	<!-- <xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_diff_drive_plugin.urdf.xacro" /> -->
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_imu.gazebo.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_lidar.gazebo.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_odometry.urdf.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_rgb_camera.urdf.xacro"/>
     <xacro:include filename="${description_path}/urdf/smb_lidar_mount.urdf.xacro"/>
+
 
 
 
@@ -44,6 +45,17 @@
 			</inertial>
 		</link>
 
+		<!-- Add joint controller for this wheel -->
+		<gazebo>
+			<plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+				<joint_name>${prefix}_WHEEL_JOINT</joint_name>
+				<topic>${prefix}_WHEEL_JOINT_velocity_cmd</topic>
+				<!-- <control_type>velocity</control_type> -->
+				<p_gain>0.0</p_gain> <!-- Proportional gain -->
+				<i_gain>0.0</i_gain> <!-- Integral gain -->
+				<d_gain>5.0</d_gain> <!-- Derivative gain -->      
+			</plugin>
+		</gazebo>
 	</xacro:macro>
 	<xacro:macro name="chassis">
 
@@ -175,6 +187,6 @@
 
     <!-- plugins -->
 
-    <xacro:robot_gz_diff_drive_plugin />
+    <!-- <xacro:robot_gz_diff_drive_plugin /> -->
 
 </robot>
