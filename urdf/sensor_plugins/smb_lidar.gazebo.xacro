@@ -56,7 +56,7 @@
           <gz_frame_id>rslidar</gz_frame_id>
           <pose relative_to='rslidar'>0 0 0 0 0 0</pose>
           <topic>scan</topic>
-          <update_rate>5</update_rate>
+          <update_rate>10</update_rate>
           <ray>
             <scan>
             <horizontal>
