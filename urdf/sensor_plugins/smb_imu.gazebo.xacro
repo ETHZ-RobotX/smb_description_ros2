@@ -9,7 +9,7 @@
     <xacro:property name="imu_base_link" value="${base_link}"/>
     <xacro:property name="imu_origin_rpy" value="0 0 0"/>
     <xacro:property name="imu_origin_xyz" value="0.2554 -0.02397 ${0.081+chassisHeight/2.0}"/>
-    <xacro:property name="imu_update_rate" value="400"/>
+    <xacro:property name="imu_update_rate" value="200"/>
     <xacro:property name="imu_link" value="imu_link"/>
     <xacro:property name="imu_topic" value="/imu"/>
 
