@@ -22,7 +22,7 @@ def generate_launch_description():
         executable="robot_state_publisher",
         name="robot_state_publisher",
         output="screen",
-        parameters=[{"robot_description": robot_description, "use_sim_time": True}],    
+        parameters=[{"robot_description": robot_description, "use_sim_time": False}],    
     )
     
     joint_state_publisher_node = Node(
@@ -30,7 +30,7 @@ def generate_launch_description():
         executable="joint_state_publisher",
         name="joint_state_publisher",
         output="screen",
-        parameters=[{"use_sim_time": True}],
+        parameters=[{"use_sim_time": False}],
     )
 
     # Define the launch description
