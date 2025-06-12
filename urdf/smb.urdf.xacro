@@ -47,7 +47,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="${pi/2} 0 0" />
 				<geometry>
-					<mesh filename="file://$(find smb_description)/urdf/meshes/wheel.dae" />
+					<mesh filename="package://smb_description/urdf/meshes/wheel.dae" />
 				</geometry>
 			</visual>
 			<inertial>
@@ -139,13 +139,13 @@
             <collision>
                 <origin xyz="${topXOffset} 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_step.dae"/>
+                    <mesh filename="package://smb_description/urdf/meshes/SMB_step.dae"/>
                 </geometry>
             </collision>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <mesh filename="file://$(find smb_description)/urdf/meshes/SMB_step.dae"/>
+                    <mesh filename="package://smb_description/urdf/meshes/SMB_step.dae"/>
                 </geometry>
             </visual>
         </link>
