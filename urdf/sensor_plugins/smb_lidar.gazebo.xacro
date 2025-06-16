@@ -56,18 +56,18 @@
           <gz_frame_id>rslidar</gz_frame_id>
           <pose relative_to='rslidar'>0 0 0 0 0 0</pose>
           <topic>scan</topic>
-          <update_rate>5</update_rate>
+          <update_rate>10</update_rate>
           <ray>
             <scan>
             <horizontal>
-              <samples>360</samples>
-              <resolution>1.0</resolution>
+              <samples>1800</samples>
+              <!-- <resolution>1.0</resolution> -->
               <min_angle>-3.14159</min_angle>
               <max_angle>3.14159</max_angle>
             </horizontal>
             <vertical>
               <samples>16</samples>
-              <resolution>1.0</resolution>
+              <!-- <resolution>1.0</resolution> -->
               <min_angle>-0.261799</min_angle>
               <max_angle>0.261799</max_angle>
             </vertical>
