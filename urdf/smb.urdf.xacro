@@ -4,8 +4,6 @@
 	<!-- Task: Include all the nessesary xacro parts for our robot -->
 	<xacro:include filename="$(find smb_description)/urdf/smb_utils.urdf.xacro" />
 	<xacro:include filename="$(find smb_description)/urdf/smb_properties.urdf.xacro" />
-	<!-- <xacro:include filename="$(find smb_description)/urdf/gps.urdf.xacro" /> -->
-	<!-- <xacro:include filename="$(find smb_description)/urdf/sensor_plugins/smb_diff_drive_plugin.urdf.xacro" /> -->
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_imu.gazebo.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_lidar.gazebo.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_odometry.urdf.xacro"/>
@@ -23,7 +21,9 @@
 		<robot_base_frame>base_link</robot_base_frame>
 		<dimensions>3</dimensions>
 		<odom_topic>odom</odom_topic>
-		<odom_frame>base_link</odom_frame>
+		<odom_frame>odom</odom_frame>
+		<odom_publish_frequency>100</odom_publish_frequency>
+		<tf_topic>tf</tf_topic>
 	  </plugin>
 	</gazebo>
 
@@ -179,9 +179,6 @@
 
 	<xacro:wheel prefix="RH" X="${backWheelX}" reflect="-1" friction_coeff="0.85" />
 
-	<!-- <xacro:gps x="0.0" y="0.0" z="${chassisHeight/2}" parent="${base_link_name}" /> -->
-
-    <!-- define simulation -->
 
     <xacro:IMU base_link="${base_link_name}" simulation="${simulation}"/>
 
@@ -197,8 +194,5 @@
         t265_origin_rpy="0 0 0"
         simulation="True"/>
 
-    <!-- plugins -->
-
-    <!-- <xacro:robot_gz_diff_drive_plugin /> -->
 
 </robot>
