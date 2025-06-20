@@ -61,10 +61,7 @@
       <child link="rgb_camera${id}_optical_link"/>
     </joint>
 
-    <!-- <xacro:if value="${simulation}"> -->
     <xacro:rgb_camera_camera_plugin name="rgb_camera" link_name="${rgb_camera_link}" rate="${rgb_camera_update_rate}"/>
-    <!-- </xacro:if> -->
-
 
   </xacro:macro>
 </robot>

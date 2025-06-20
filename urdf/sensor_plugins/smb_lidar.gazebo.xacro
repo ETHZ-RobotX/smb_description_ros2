@@ -10,8 +10,6 @@
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <xacro:macro name="LIDAR" params="parent_link simulation">
-
-    <!-- <xacro:if value="${simulation}"> -->
       
       <!-- Replacing RS-16 with the default Gazebo lidar -->
       <link name="rslidar">
@@ -35,8 +33,6 @@
         <parent link="${parent_link}"/>
         <child link="rslidar"/>
         <origin xyz="0.0 0.0 ${lidarBoxHeight+0.039}" rpy="0 0 0"/>
-        <!-- <axis xyz="0 0 1"/> -->
-        <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
       </joint>
 
     <gazebo reference='${parent_link}_to_rslidar'>
@@ -52,7 +48,6 @@
 
       <gazebo reference="rslidar">
         <sensor name="rslidar" type="gpu_lidar">
-          <!-- <frame>rslidar</frame> -->
           <gz_frame_id>rslidar</gz_frame_id>
           <pose relative_to='rslidar'>0 0 0 0 0 0</pose>
           <topic>scan</topic>
@@ -75,20 +70,16 @@
             
             <!-- Range settings for RS32 -->
             <range>
-              <min>0.2</min> <!-- Minimum detection range -->
-              <max>50.0</max> <!-- Maximum detection range; can vary slightly with RS32 models -->
-              <resolution>0.01</resolution> <!-- Resolution of 1 cm for high accuracy -->
+              <min>0.2</min> 
+              <max>50.0</max> 
+              <resolution>0.01</resolution>
             </range>
           </ray>
           
-          <!-- Visualization for Gazebo UI -->
           <always_on>1</always_on>
           <visualize>true</visualize>
         </sensor>
       </gazebo>
-
-
-    <!-- </xacro:if> -->
 
   </xacro:macro>
 
