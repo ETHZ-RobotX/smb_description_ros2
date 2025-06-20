@@ -24,9 +24,6 @@
     <gazebo reference="${imu_link}">
       <sensor name="imu_sensor" type="imu">
         <gz_frame_id>imu_link</gz_frame_id>
-        <!-- <frame>imu</frame>
-        <gz_frame_id>imu</gz_frame_id> -->
-        <!-- <pose relative_to='imu'>0 0 0 0 0 0</pose> -->
         <always_on>true</always_on>
         <update_rate>400</update_rate>
         <visualize>true</visualize>
@@ -79,7 +76,6 @@
     <gazebo reference="${imu_link}">
       <material>Gazebo/Orange</material>
     </gazebo>
-
 
     <gazebo reference="imu_joint">
       <disableFixedJointLumping>true</disableFixedJointLumping>
