@@ -12,18 +12,28 @@
           <camera>
             <horizontal_fov>1.047</horizontal_fov>
             <image>
-              <width>320</width>
-              <height>240</height>
+              <width>1440</width>
+              <height>1080</height>
             </image>
             <clip>
               <near>0.1</near>
               <far>100</far>
             </clip>
+            <distortion>
+              <k1>-0.11201</k1>
+              <k2>0.097448</k2>
+              <k3>0.0</k3>
+              <p1>-0.000374</p1>
+              <p2>-0.000438</p2>
+              <center_x>744.4645</center_x>
+              <center_y>560.9802</center_y>
+            </distortion>
           </camera>
           <always_on>1</always_on>
-          <update_rate>30</update_rate>
+          <update_rate>5</update_rate>
           <visualize>true</visualize>
           <topic>camera</topic>
+          <optical_frame_id>rgb_camera_optical_link</optical_frame_id>
         </sensor>
       <!-- <sensor type="camera" name="${name}">
         <pose>0.0066 0 0 0 0 0</pose>
