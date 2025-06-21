@@ -6,7 +6,6 @@
 	<xacro:include filename="$(find smb_description)/urdf/smb_properties.urdf.xacro" />
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_imu.gazebo.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_lidar.gazebo.xacro"/>
-    <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_odometry.urdf.xacro"/>
     <xacro:include filename="${description_path}/urdf/sensor_plugins/smb_rgb_camera.urdf.xacro"/>
     <xacro:include filename="${description_path}/urdf/smb_lidar_mount.urdf.xacro"/>
 
