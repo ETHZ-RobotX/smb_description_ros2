@@ -34,6 +34,7 @@
           <visualize>true</visualize>
           <topic>camera</topic>
           <optical_frame_id>rgb_camera_optical_link</optical_frame_id>
+          <frame_id>rgb_camera_optical_link</frame_id>
         </sensor>
       <!-- <sensor type="camera" name="${name}">
         <pose>0.0066 0 0 0 0 0</pose>
